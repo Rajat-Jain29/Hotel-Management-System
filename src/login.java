@@ -162,13 +162,7 @@ Connection con;
             rs = st.executeQuery(q);
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Login SucessFully " );
-                  
-                
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Invalid Credentials ");
-            }
-              try {
+                  try {
                         new home().setVisible(true);
                         this.setVisible(false);
                     } catch (ClassNotFoundException ex) {
@@ -176,6 +170,12 @@ Connection con;
                     } catch (SQLException ex) {
                         Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Invalid Credentials ");
+            }
+              
         }
         }catch (SQLException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);

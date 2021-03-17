@@ -25,6 +25,7 @@ Connection con;
 ResultSet rs;
 String q;
 Statement st;
+int k;
     /** Creates new form custdet */
     public custdet() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -71,7 +72,7 @@ Statement st;
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, 40, 40));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 48));
         jLabel2.setForeground(new java.awt.Color(153, 0, 0));
         jLabel2.setText("CLICK ANY ROW TO OPEN THE BILL");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 1060, 50));
@@ -104,18 +105,23 @@ Statement st;
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 1240, 260));
 
         jLabel4.setBackground(new java.awt.Color(153, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24));
         jLabel4.setForeground(new java.awt.Color(153, 0, 0));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Customer Details Bill.png"))); // NOI18N
         jLabel4.setText("CUSTOMER DETAILS BILL");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 380, 60));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel5.setText("SEARCH BY CHECK OUT DATE");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 220, 30));
 
@@ -150,7 +156,8 @@ Statement st;
             // TODO add your handling code here:
             new custdet().setVisible(true);
             this.setVisible(false);
-            jButton1.setEnabled(true);
+
+           
         
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(custdet.class.getName()).log(Level.SEVERE, null, ex);
@@ -163,13 +170,13 @@ Statement st;
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:44
-
+        k=0;
         try {
             DefaultTableModel t=(DefaultTableModel) jTable1.getModel();
             // TODO add your handling code here:
-            q = "select * from cust where checkout is not NULL";
+            q = "select * from cust where checkout != 'NULL'";
             rs = st.executeQuery(q);
-            if(rs.next()) {
+            while(rs.next()) {
                 int id=rs.getInt("id");
                 String name=rs.getString("name");
                 String ph=rs.getString("ph");
@@ -183,14 +190,13 @@ Statement st;
                 String bed=rs.getString("bed");
                 String rt=rs.getString("rt");
                 String pr=rs.getString("price");
-
                 t.addRow(new Object[]{id,name,ph,nation,gen,ema,idp,ad,in,rno,bed,rt,pr});
-              
-
+                k=1;
             }
-            else{
+            if(k==0){
                 JOptionPane.showMessageDialog(null,"No one checkout today");
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(custdet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -199,17 +205,18 @@ Statement st;
     }//GEN-LAST:event_formComponentShown
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+    int r=0;
         if(jTextField1.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Fill Check Out Date");
         } else{
 
             try {
-                DefaultTableModel t=(DefaultTableModel) jTable1.getModel();
+                DefaultTableModel ts=(DefaultTableModel) jTable1.getModel();
                 // TODO add your handling code here:
                 q = "select * from cust where checkout = '" + jTextField1.getText() + "' ";
                 rs = st.executeQuery(q);
-                if(rs.next()) {
+               ts.setRowCount(0);
+                while(rs.next()) {
                     int id=rs.getInt("id");
                     String name=rs.getString("name");
                     String ph=rs.getString("ph");
@@ -223,18 +230,42 @@ Statement st;
                     String bed=rs.getString("bed");
                     String rt=rs.getString("rt");
                     String pr=rs.getString("price");
+                    r=1;
+                    ts.addRow(new Object[]{id,name,ph,nation,gen,ema,idp,ad,in,rno,bed,rt,pr});
+                    
 
-                    t.addRow(new Object[]{id,name,ph,nation,gen,ema,idp,ad,in,rno,bed,rt,pr});
-                    jButton1.setEnabled(false);
-
-                } else{
-                    JOptionPane.showMessageDialog(null,"No one checkout today");
+                } if(r==0){
+                    JOptionPane.showMessageDialog(null,"No One is Checkout On this date");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(custdet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int in=jTable1.getSelectedRow();
+        TableModel ty=jTable1.getModel();
+        String id=ty.getValueAt(in,0).toString();
+        try{
+                if(new File("E:\\"+id+".pdf").exists() ){
+                    Process p=Runtime
+                            .getRuntime()
+
+                            .exec("rundll32 url.dll,FileProtocolHandler E:\\"+id+".pdf");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"File is not Exits");
+                }
+            }catch(Exception e){
+
+            }
+
+
+
+
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
     * @param args the command line arguments

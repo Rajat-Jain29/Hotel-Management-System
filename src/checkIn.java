@@ -26,7 +26,8 @@ public class checkIn extends javax.swing.JFrame {
     ResultSet rs;
     Statement st;
     String q;
-     int id=1;
+    int k;
+    
     /** Creates new form checkIn */
     public checkIn() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -34,31 +35,38 @@ public class checkIn extends javax.swing.JFrame {
         Class.forName("java.sql.Driver");
         con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel","root","");
         st=con.createStatement();
-   
+       
         jTextField2.setEditable(false);
         SimpleDateFormat m= new SimpleDateFormat("yyyy/MM/dd");
         Calendar c=Calendar.getInstance();
         jTextField2.setText(m.format(c.getTime()));
-       
- 
 
+        String h="select * from cust";
+            rs=st.executeQuery(h);
+            while(rs.next()){
+                k++;
+            }
+            k++;
+        jLabel7.setText(""+k);
+    
+       
     }
    
-    public void roomdetails() throws SQLException{
-
-        String bed,rt,price;
-        String rno;
-
-        jComboBox1.removeAllItems();
-        jLabel8.setText("");
-        bed=(String) jComboBox3.getSelectedItem();
-        rt= (String) jComboBox4.getSelectedItem();
-        
-        q="select * from room where rt = '"+rt+"' and bed = '"+bed+"' and status = 'Not Booked'    ";
-        rs=st.executeQuery(q);
-       
-        while(rs.next()){
-            jComboBox1.addItem(rs.getString("rno"));
+    public void roomdetails() {
+        try {
+            String beds;
+            String rty;
+            jComboBox1.removeAllItems();
+            jLabel8.setText("");
+            beds = (String) jComboBox3.getSelectedItem();
+            rty = (String) jComboBox4.getSelectedItem();
+            String gb = "select * from room where rt = '" + rty + "' and bed = '" + beds + "' and status = 'Not Booked'  ";
+            rs = st.executeQuery(gb);
+            while (rs.next()) {
+                jComboBox1.addItem(rs.getString("rno"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(checkIn.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -101,6 +109,8 @@ public class checkIn extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -154,7 +164,7 @@ public class checkIn extends javax.swing.JFrame {
         jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 323, 260, 30));
 
-        jComboBox1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -162,9 +172,8 @@ public class checkIn extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 320, 260, 30));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14));
-        jLabel7.setText("NAME");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 80, 30));
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 90, 30));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24));
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 390, 160, 30));
@@ -199,7 +208,7 @@ public class checkIn extends javax.swing.JFrame {
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 260, 30));
 
         jComboBox3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Single", "Double", "Triple" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SINGLE", "DOUBLE", "TRIPLE" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
@@ -236,7 +245,7 @@ public class checkIn extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 150, 30));
 
         jButton2.setBackground(new java.awt.Color(153, 0, 0));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("ALLOCATE ROOM");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -245,6 +254,14 @@ public class checkIn extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 460, 160, 30));
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14));
+        jLabel16.setText("NAME");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 80, 30));
+
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel17.setText("ID (HOSTEL)");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, 90, 30));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/all pages background.png"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 600));
@@ -278,14 +295,11 @@ public class checkIn extends javax.swing.JFrame {
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
-        try {
+       
             // TODO add your handling code here:
             roomdetails();
             
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(checkIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -305,17 +319,12 @@ public class checkIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        try {
-            // TODO add your handling code here:
-            roomdetails();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(checkIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        roomdetails();
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+     
        
         
         
@@ -331,11 +340,13 @@ public class checkIn extends javax.swing.JFrame {
         String rt=(String) jComboBox4.getSelectedItem();
         String bed=(String) jComboBox3.getSelectedItem();
       
-        q="insert into cust values ( "+id+" ,'"+jTextField5.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"','"+f+"','"+jTextField1.getText()+"' ,'"+jTextField6.getText()+"' ,'"+jTextField7.getText()+"' ,'"+jTextField2.getText()+"' ,'"+rno+"','"+bed+"','"+rt+"','"+jLabel8.getText()+"' ,0,'NULL','NULL'   )     ";
-id++;
+        q="insert into cust values (  "+jLabel7.getText()+", '"+jTextField5.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"','"+f+"','"+jTextField1.getText()+"' ,'"+jTextField6.getText()+"' ,'"+jTextField7.getText()+"' ,'"+jTextField2.getText()+"' ,'"+rno+"','"+bed+"','"+rt+"', "+jLabel8.getText()+" ,0,'NULL','NULL'   )  ;   ";
+
         try {
             st.executeUpdate(q);
             JOptionPane.showMessageDialog(null, "Room Allocate SucessFully");
+          
+            
             
             new checkIn().setVisible(true);
             this.setVisible(false);
@@ -392,6 +403,8 @@ id++;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
