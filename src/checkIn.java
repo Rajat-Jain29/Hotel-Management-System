@@ -37,10 +37,12 @@ public class checkIn extends javax.swing.JFrame {
         st=con.createStatement();
        
         jTextField2.setEditable(false);
-        SimpleDateFormat m= new SimpleDateFormat("yyyy/MM/dd");
+        
+        SimpleDateFormat m = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
         Calendar c=Calendar.getInstance();
         jTextField2.setText(m.format(c.getTime()));
-
+        
         String h="select * from cust";
             rs=st.executeQuery(h);
             while(rs.next()){
@@ -84,7 +86,6 @@ public class checkIn extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -111,6 +112,7 @@ public class checkIn extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -136,10 +138,6 @@ public class checkIn extends javax.swing.JFrame {
         jLabel2.setText("EMAIL");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 80, 30));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14));
-        jLabel3.setText("CHECK IN DATE (TODAY)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 180, 30));
-
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel4.setText("MOBILE NO.");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 90, 30));
@@ -147,7 +145,7 @@ public class checkIn extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 260, 30));
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14));
+        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 260, 30));
 
         jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 14));
@@ -172,7 +170,7 @@ public class checkIn extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 320, 260, 30));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, 90, 30));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24));
@@ -207,7 +205,7 @@ public class checkIn extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MALE", "FEMALE", "OTHER" }));
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 260, 30));
 
-        jComboBox3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jComboBox3.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SINGLE", "DOUBLE", "TRIPLE" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,7 +243,7 @@ public class checkIn extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 150, 30));
 
         jButton2.setBackground(new java.awt.Color(153, 0, 0));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14));
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("ALLOCATE ROOM");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -253,15 +251,19 @@ public class checkIn extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 460, 160, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 460, 190, 30));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel16.setText("NAME");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 80, 30));
 
-        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel17.setText("ID (HOSTEL)");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, 90, 30));
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel18.setText("CHECK IN DATE AND TIME(TODAY)");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 250, 30));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/all pages background.png"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 600));
@@ -339,9 +341,9 @@ public class checkIn extends javax.swing.JFrame {
         String rno=(String) jComboBox1.getSelectedItem();
         String rt=(String) jComboBox4.getSelectedItem();
         String bed=(String) jComboBox3.getSelectedItem();
-      
-        q="insert into cust values (  "+jLabel7.getText()+", '"+jTextField5.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"','"+f+"','"+jTextField1.getText()+"' ,'"+jTextField6.getText()+"' ,'"+jTextField7.getText()+"' ,'"+jTextField2.getText()+"' ,'"+rno+"','"+bed+"','"+rt+"', "+jLabel8.getText()+" ,0,'NULL','NULL'   )  ;   ";
-
+        Calendar calendar = Calendar.getInstance();
+       
+        q="insert into cust values (  "+jLabel7.getText()+", '"+jTextField5.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"','"+f+"','"+jTextField1.getText()+"' ,'"+jTextField6.getText()+"' ,'"+jTextField7.getText()+"' ,'"+jTextField2.getText()+"' ,'"+rno+"','"+bed+"','"+rt+"', "+jLabel8.getText()+" ,0,'NULL','NULL'  )  ;   ";
         try {
             st.executeUpdate(q);
             JOptionPane.showMessageDialog(null, "Room Allocate SucessFully");
@@ -405,8 +407,8 @@ public class checkIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

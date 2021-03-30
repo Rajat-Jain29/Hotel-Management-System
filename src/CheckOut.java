@@ -99,21 +99,21 @@ public class CheckOut extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, 40, 40));
 
         jLabel1.setBackground(new java.awt.Color(153, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24));
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Customer Check Out.png"))); // NOI18N
         jLabel1.setText("CUSTOMER CHECK OUT");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 60));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel2.setText("PRICE / DAY");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 100, 30));
 
         jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 200, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 280, 200, -1));
 
         jButton1.setBackground(new java.awt.Color(153, 0, 0));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("CLEAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -143,49 +143,49 @@ public class CheckOut extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 1260, 220));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel3.setText("ROOM NO.");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 80, 30));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel4.setText("CUSTOMER NAME");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 130, 30));
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 220, -1));
 
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 180, -1));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel5.setText("CHECK IN DATE");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 120, 30));
 
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 180, -1));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel6.setText("TOTAL AMOUNT TO COLLECT");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 210, 30));
 
         jTextField5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 180, -1));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel7.setText("CHECK OUT (TODAY)");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 150, 30));
 
         jTextField6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 180, -1));
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel8.setText("NO. OF DAYS STAYED");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 150, 30));
 
-        jTextField7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, -1));
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jButton2.setText("SEARCH");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,18 +205,18 @@ public class CheckOut extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel10.setText("CUSTOMER MOBILE NO.");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 160, 180, 30));
 
-        jTextField8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField8.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 200, 200, -1));
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14));
         jLabel11.setText("EMAIL");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 250, 60, 30));
 
-        jTextField9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField9.setFont(new java.awt.Font("Times New Roman", 1, 14));
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 180, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/all pages background.png"))); // NOI18N
@@ -239,7 +239,7 @@ public class CheckOut extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         jTextField5.setEditable(false);
-        SimpleDateFormat m= new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat m= new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar c=Calendar.getInstance();
         jTextField5.setText(m.format(c.getTime()));
         java.util.Date da = null;
